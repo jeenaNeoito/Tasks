@@ -20,6 +20,10 @@ class PipHandler {
       height ? Math.floor(height) : 0,
     );
   }
+
+  enblePIPModeIos() {
+    return NativeModules.PIPIosCustomModule.enablePictureInPictureMode();
+  }
 }
 
 export default new PipHandler();

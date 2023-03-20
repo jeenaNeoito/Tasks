@@ -1,18 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React, {useEffect, useRef} from 'react';
-import {
-  NativeModules,
-  Platform,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, {useRef} from 'react';
+import {Platform, StyleSheet, TouchableOpacity, View} from 'react-native';
 import VideoPlayer from 'react-native-video-player';
 import PipHandler from './src/PipHandler';
 import {Pip} from './src/assets';
@@ -20,13 +7,9 @@ import {Pip} from './src/assets';
 function App(): JSX.Element {
   const ref = useRef();
 
-  const {PIPIosCustomModule} = NativeModules;
-
   const handleToggleMode = () => {
     if (Platform.OS === 'ios') {
-      PIPIosCustomModule.enablePictureInPictureMode();
-      // handleIosPipMode();
-      // PipIosModule.startPIPMode('./src/assets/video/mikki.mp4');
+      PipHandler.enblePIPModeIos();
     } else {
       PipHandler.enterPipMode(900, 500);
     }
@@ -40,11 +23,11 @@ function App(): JSX.Element {
         videoWidth={1600}
         videoHeight={900}
         // autoplay
-        pauseOnPress
+        // pauseOnPress
         playInBackground
         fullScreenOnLongPress
         controls
-        // pictureInPicture
+        pictureInPicture
         resizeMode="contain"
         // disableControlsAutoHide
         showDuration
